@@ -40,7 +40,9 @@ export const PeoplePage = () => {
     const isQueryMatching =
       query.length === 0 ||
       !query ||
-      person.name.toLowerCase().includes(query.toLowerCase());
+      person.name.toLowerCase().includes(query.toLowerCase()) ||
+      person.motherName?.toLowerCase().includes(query.toLowerCase()) ||
+      person.fatherName?.toLowerCase().includes(query.toLowerCase());
     const lifeTimeCentury = Math.ceil(person.born / 100);
     const isCenturyMatching =
       centuries.length === 0 || centuries.includes(lifeTimeCentury.toString());
