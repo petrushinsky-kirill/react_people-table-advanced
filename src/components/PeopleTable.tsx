@@ -20,19 +20,15 @@ export const PeopleTable = ({ people }: { people: Person[] | undefined }) => {
   const orderParam = searchParams.get('order');
 
   const getSortParams = (value: string) => {
-    let newSort = null;
-    let newOrder = null;
-
     if (value !== sortParam) {
-      newSort = value;
+      return { sort: value, order: null };
     }
 
-    if (value === sortParam && !orderParam) {
-      newSort = value;
-      newOrder = 'desc';
+    if (!orderParam) {
+      return { sort: value, order: 'desc' };
     }
 
-    return { sort: newSort, order: newOrder };
+    return { sort: null, order: null };
   };
 
   const getSortIcon = (value: string) => {
